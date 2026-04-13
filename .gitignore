@@ -1,0 +1,6 @@
+.env
+.idea/
+.ipynb_checkpoints/
+_pycache_/
+*.pyc
+users.db
