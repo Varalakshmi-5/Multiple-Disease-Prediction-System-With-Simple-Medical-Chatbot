@@ -19,10 +19,10 @@ load_dotenv()
 # ─────────────────────────────────────────────
 #  CONFIG
 # ─────────────────────────────────────────────
-SMTP_EMAIL     = ""
-SMTP_APP_PASS  = ""
-ADMIN_EMAIL    = ""
-ADMIN_PASSWORD = ""
+SMTP_EMAIL     = os.getenv("SMTP_EMAIL")
+SMTP_APP_PASS  = os.getenv("SMTP_APP_PASS")
+ADMIN_EMAIL    = os.getenv("ADMIN_EMAIL")
+ADMIN_PASSWORD = os.getenv("ADMIN_PASSWORD")
 DB_PATH        = "users.db"
 
 
