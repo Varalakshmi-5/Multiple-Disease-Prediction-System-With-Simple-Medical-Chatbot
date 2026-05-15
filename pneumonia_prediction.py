@@ -6,15 +6,18 @@ from PIL import Image
 import matplotlib.pyplot as plt
 import cv2
 from pathlib import Path
-
-
 import os
-import os
+
 BASE_DIR     = os.path.dirname(os.path.abspath(__file__))
 MODEL_PATH   = os.path.join(BASE_DIR, "pneumonia_model.keras")
 INDICES_PATH = os.path.join(BASE_DIR, "class_indices.json")
 IMG_SIZE     = (224, 224)
 
+# TEMPORARY DEBUG - remove after fixing
+st.write("BASE_DIR:", BASE_DIR)
+st.write("MODEL_PATH:", MODEL_PATH)
+st.write("File exists:", os.path.exists(MODEL_PATH))
+st.write("Files in BASE_DIR:", os.listdir(BASE_DIR))
 
 # ─────────────────────────────────────────────
 # LOAD FUNCTIONS
@@ -301,7 +304,6 @@ def pneumonia_prediction_page():
         st.markdown("---")
         show_advice(label)
 
-        # ── Save result so app.py can log it to the health records DB ──
         pneumonia_idx  = class_indices.get("PNEUMONIA", 1)
         pneumonia_prob = prob if pneumonia_idx == 1 else 1 - prob
         risk_level, _  = get_risk_level(prob, class_indices)
@@ -318,7 +320,6 @@ def pneumonia_prediction_page():
                 "gradcam_shown":   show_gradcam,
             }
         }
-        # Reset saved flag so app.py logs this fresh result
         st.session_state["pneumonia_saved"] = False
 
     else:
