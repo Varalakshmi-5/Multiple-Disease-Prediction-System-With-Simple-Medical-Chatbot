@@ -8,8 +8,10 @@ import cv2
 from pathlib import Path
 
 
-MODEL_PATH   = r"C:\Users\Varalakshmi\Desktop\new_new_project\pneumonia_model.keras"
-INDICES_PATH = r"C:\Users\Varalakshmi\Desktop\new_new_project\class_indices.json"
+import os
+BASE_DIR     = os.path.dirname(os.path.abspath(__file__))
+MODEL_PATH   = os.path.join(BASE_DIR, "pneumonia_model.keras")
+INDICES_PATH = os.path.join(BASE_DIR, "class_indices.json")
 IMG_SIZE     = (224, 224)
 
 
