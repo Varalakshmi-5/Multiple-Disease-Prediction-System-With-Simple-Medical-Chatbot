@@ -26,6 +26,8 @@ except:
     SMTP_APP_PASS  = os.getenv("SMTP_APP_PASS")
     ADMIN_EMAIL    = os.getenv("ADMIN_EMAIL")
     ADMIN_PASSWORD = os.getenv("ADMIN_PASSWORD")
+    
+DB_PATH        = "users.db"
 
 
 # ─────────────────────────────────────────────
