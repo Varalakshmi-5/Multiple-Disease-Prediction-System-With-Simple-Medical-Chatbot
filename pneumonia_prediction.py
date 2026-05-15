@@ -13,17 +13,11 @@ MODEL_PATH   = os.path.join(BASE_DIR, "pneumonia_model.keras")
 INDICES_PATH = os.path.join(BASE_DIR, "class_indices.json")
 IMG_SIZE     = (224, 224)
 
-# TEMPORARY DEBUG - remove after fixing
-st.write("BASE_DIR:", BASE_DIR)
-st.write("MODEL_PATH:", MODEL_PATH)
-st.write("File exists:", os.path.exists(MODEL_PATH))
-st.write("Files in BASE_DIR:", os.listdir(BASE_DIR))
 
 # ─────────────────────────────────────────────
 # LOAD FUNCTIONS
 # ─────────────────────────────────────────────
 
-@st.cache_resource
 def load_pneumonia_model():
     if not Path(MODEL_PATH).exists():
         return None
