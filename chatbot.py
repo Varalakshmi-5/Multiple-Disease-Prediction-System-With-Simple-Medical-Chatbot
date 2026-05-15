@@ -3,6 +3,7 @@ import pandas as pd
 import numpy as np
 import pickle
 import re
+import os
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
@@ -21,7 +22,9 @@ def download_nltk_data():
 # Load saved models and data
 @st.cache_resource
 def load_models():
-    save_dir = r"C:\Users\Varalakshmi\Desktop\new_new_project\saved_models"
+    
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+    save_dir = os.path.join(BASE_DIR, "saved_models")
 
     with open(f"{save_dir}/disease_model.pkl", 'rb') as f:
         model = pickle.load(f)
