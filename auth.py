@@ -11,19 +11,21 @@ import pandas as pd
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from datetime import datetime, timedelta
-from dotenv import load_dotenv
+
 import os
 
-load_dotenv()
-
-# ─────────────────────────────────────────────
-#  CONFIG
-# ─────────────────────────────────────────────
-SMTP_EMAIL     = os.getenv("SMTP_EMAIL")
-SMTP_APP_PASS  = os.getenv("SMTP_APP_PASS")
-ADMIN_EMAIL    = os.getenv("ADMIN_EMAIL")
-ADMIN_PASSWORD = os.getenv("ADMIN_PASSWORD")
-DB_PATH        = "users.db"
+try:
+    SMTP_EMAIL     = st.secrets["SMTP_EMAIL"]
+    SMTP_APP_PASS  = st.secrets["SMTP_APP_PASS"]
+    ADMIN_EMAIL    = st.secrets["ADMIN_EMAIL"]
+    ADMIN_PASSWORD = st.secrets["ADMIN_PASSWORD"]
+except:
+    from dotenv import load_dotenv
+    load_dotenv()
+    SMTP_EMAIL     = os.getenv("SMTP_EMAIL")
+    SMTP_APP_PASS  = os.getenv("SMTP_APP_PASS")
+    ADMIN_EMAIL    = os.getenv("ADMIN_EMAIL")
+    ADMIN_PASSWORD = os.getenv("ADMIN_PASSWORD")
 
 
 # ─────────────────────────────────────────────
