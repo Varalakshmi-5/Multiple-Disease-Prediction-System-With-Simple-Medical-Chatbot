@@ -9,6 +9,7 @@ from pathlib import Path
 
 
 import os
+import os
 BASE_DIR     = os.path.dirname(os.path.abspath(__file__))
 MODEL_PATH   = os.path.join(BASE_DIR, "pneumonia_model.keras")
 INDICES_PATH = os.path.join(BASE_DIR, "class_indices.json")
