@@ -20,8 +20,14 @@ IMG_SIZE     = (224, 224)
 
 def load_pneumonia_model():
     if not Path(MODEL_PATH).exists():
+        st.error("File does not exist")
         return None
-    return tf.keras.models.load_model(MODEL_PATH)
+    try:
+        model = tf.keras.models.load_model(MODEL_PATH)
+        return model
+    except Exception as e:
+        st.error(f"Error loading model: {e}")
+        return None
 
 
 @st.cache_data
