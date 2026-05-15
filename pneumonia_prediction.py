@@ -18,15 +18,14 @@ IMG_SIZE     = (224, 224)
 # LOAD FUNCTIONS
 # ─────────────────────────────────────────────
 
+@st.cache_resource
 def load_pneumonia_model():
     if not Path(MODEL_PATH).exists():
-        st.error("File does not exist")
         return None
     try:
         model = tf.keras.models.load_model(MODEL_PATH)
         return model
     except Exception as e:
-        st.error(f"Error loading model: {e}")
         return None
 
 
@@ -277,7 +276,10 @@ def pneumonia_prediction_page():
     class_indices = load_class_indices()
 
     if model is None:
-        st.error(f"Model not found at `{MODEL_PATH}`. Please complete training first.")
+        st.error("Model failed to load. Click below to retry.")
+        if st.button("🔄 Retry Loading Model"):
+            st.cache_resource.clear()
+            st.rerun()
         return
 
     show_gradcam = st.checkbox("Show Grad-CAM heatmap", value=True)
